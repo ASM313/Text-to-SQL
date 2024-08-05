@@ -23,8 +23,13 @@ def get_gemini_response(question, prompt):
 def read_sql_query(sql, db):
     conn = sqlite3.connect(db)
     cur = conn.cursor()
-    cur.execute(sql)
-    rows = cur.fetchall()
+    
+    if sql=='' or sql==None:
+        st.subheader("no prompt provided")
+    else:
+        cur.execute(sql)
+        rows = cur.fetchall()
+    
     conn.commit()
     conn.close()
     
@@ -62,7 +67,7 @@ st.header("Ease to Retrieve SQL Data")
 
 question = st.text_input("Input: ", key='input')
 
-submit = st.button("ASK")
+submit = st.button("Convert to SQL Query")
 
 # When 'submit' clicked
 
@@ -71,7 +76,7 @@ if submit:
     print(response)
     
     data = read_sql_query(response, "student.db")
-    st.subheader(f"The response for !{question}! is ")
+    st.subheader(f"The response for \n !>>>[ {question} ]<<<! is ")
     for row in data:
         print(row)
         st.header(row)
