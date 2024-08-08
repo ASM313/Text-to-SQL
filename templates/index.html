@@ -25,7 +25,13 @@
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#about">About</a>
+                <a class="nav-link btn btn-outline-primary" href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link btn btn-outline-warning" href="https://github.com/ASM313/Text-to-SQL">Github Repo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link btn btn-outline-light" href="https://www.linkedin.com/in/atiqmansoori7/">Developer</a>
               </li>
             </ul>  
           </div>
@@ -54,7 +60,9 @@
         
         {% endif %}
 
-        {% if data %}
+        {% if data|length == 1 %}
+          <h3 style="color: blue"> <i>Result</i> : {{data}}</h3>
+        {% elif data|length > 1 %}
         <table class="table">
             <thead>
               <tr>
@@ -91,12 +99,13 @@
               <p class="card-text">Some quick example: <span>"Average marks of students class-wise."</span>.</p>
               <p class="card-text">Some quick example: <span>"Average marks of students section-wise."</span>.</p>
               <p class="card-text">Some quick example: <span>"Number of students in each class."</span>.</p>
-              <p class="card-text">Some quick example: <span>""</span>.</p>
+              
             </div>
           </div>
           
           {% endif %}  
           <br>
+        <hr>
         <section id="about">
             <h1>About</h1>    
             <h2>This app is build to make queries of sql</h2>    
