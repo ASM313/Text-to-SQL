@@ -57,7 +57,7 @@ def query():
     print(response)
     
     data = read_sql_query(response, "student.db")
-    return render_template("index.html", data=data)
+    return render_template("index.html", data=data, sql_query=response, question=question)
 
 
 if __name__=='__main__':
